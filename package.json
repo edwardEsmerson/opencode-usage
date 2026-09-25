@@ -1,0 +1,27 @@
+{
+  "name": "opencode-usage",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "files": ["src/"],
+  "scripts": {
+    "test": "tsx --test test/*.test.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "exports": {
+    "./server": "./src/server.ts",
+    "./tui": "./src/tui.tsx"
+  },
+  "dependencies": {
+    "@opencode-ai/plugin": "1.18.25",
+    "@opentui/core": "0.4.5",
+    "@opentui/keymap": "0.4.5",
+    "@opentui/solid": "0.4.5",
+    "solid-js": "1.9.12"
+  },
+  "devDependencies": {
+    "@types/node": "24.12.2",
+    "tsx": "4.20.5",
+    "typescript": "5.8.2"
+  }
+}
