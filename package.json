@@ -1,12 +1,23 @@
 {
-  "name": "opencode-usage",
+  "name": "opencode-slash-usage",
   "version": "0.1.0",
-  "private": true,
+  "description": "OpenCode plugin for ChatGPT account usage limits in a tool and /usage dialog",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edwardEsmerson/opencode-usage.git"
+  },
+  "homepage": "https://github.com/edwardEsmerson/opencode-usage#readme",
+  "keywords": ["opencode", "plugin", "chatgpt", "usage"],
+  "engines": {
+    "opencode": ">=1.18.25 <2"
+  },
   "type": "module",
   "files": ["src/"],
   "scripts": {
     "test": "tsx --test test/*.test.ts",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run typecheck && npm test"
   },
   "exports": {
     "./server": "./src/server.ts",
