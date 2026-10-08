@@ -1,5 +1,3 @@
-import type { UsageSnapshot, UsageWindow } from "../domain.js"
-
 export function clampPercent(value: number): number {
   return Math.max(0, Math.min(100, value))
 }
@@ -30,24 +28,4 @@ export function formatAbsoluteReset(resetAt: number | undefined): string | undef
     hour: "numeric",
     minute: "2-digit",
   }).format(resetAt)
-}
-
-export function textProgressBar(value: number, width = 24): string {
-  const filled = Math.round((clampPercent(value) / 100) * width)
-  return `[${"#".repeat(filled)}${"-".repeat(width - filled)}]`
-}
-
-export function formatWindowLine(window: UsageWindow, now = Date.now()): string {
-  const used = formatPercent(window.usedPercent)
-  const remaining = formatPercent(100 - clampPercent(window.usedPercent))
-  return [
-    `${window.label}: ${used}% used (${remaining}% left)`,
-    `${textProgressBar(window.usedPercent)} ${formatRelativeReset(window.resetAt, now)}`,
-  ].join("\n")
-}
-
-export function formatUsageText(snapshot: UsageSnapshot, now = Date.now()): string {
-  const provider = snapshot.providerID === "openai" ? "OpenAI" : snapshot.providerID
-  const heading = [provider, snapshot.plan, snapshot.modelID].filter(Boolean).join(" | ")
-  return [`Usage - ${heading}`, "", ...snapshot.windows.flatMap((window, index) => [formatWindowLine(window, now), ...(index < snapshot.windows.length - 1 ? [""] : [])])].join("\n")
 }

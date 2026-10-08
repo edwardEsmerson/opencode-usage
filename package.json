@@ -1,7 +1,7 @@
 {
   "name": "opencode-slash-usage",
-  "version": "0.1.0",
-  "description": "OpenCode plugin for ChatGPT account usage limits in a tool and /usage dialog",
+  "version": "0.2.0",
+  "description": "OpenCode TUI plugin for ChatGPT account usage limits in a /usage dialog",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
     "prepublishOnly": "npm run typecheck && npm test"
   },
   "exports": {
+    ".": "./src/index.ts",
     "./server": "./src/server.ts",
     "./tui": "./src/tui.tsx"
   },
